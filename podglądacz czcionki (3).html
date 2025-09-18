@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" /><script>/* <![CDATA[ */ ringDataLayer = {"context":{"variant":{"accelerator":"ZG93bmxvYWQucG9jenRhLm9uZXQucGw6OnByb2Rfd2l0aF91c2VyX2RhdGFfZG93bmxvYWRlcl9pbl9hd3NfMg=="},"id":{"website":"9481b0b7-7c3d-463b-8f3c-9de5c8289e21"}}}; /* ]]> */</script><script>/* <![CDATA[ */ accConf = {"events":{"endpointPaths":["/a8f4d8cd95e164917035b64b867a45dd"]}}; /* ]]> */</script>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Podglądacz czcionki</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPgogIDxjaXJjbGUgY3g9IjQ1IiBjeT0iNDUiIHI9IjI1IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0ibm9uZSIvPgogIDxsaW5lIHgxPSI2MiIgeTE9IjYyIiB4Mj0iODUiIHkyPSI4NSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4=" type="image/svg+xml"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Julius+Sans+One&family=Patrick+Hand&family=Dancing+Script&family=Roboto&family=Creepster&family=Baloo+2&family=Great+Vibes&family=Indie+Flower&family=Rock+Salt&family=Paprika&family=Prata&family=Sacramento&family=Shrikhand&family=Staatliches&family=Vidaloka&family=Vollkorn+SC&family=Yesteryear&family=Henny+Penny&family=Pacifico&family=Marck+Script&family=Lobster&family=Gloria+Hallelujah&family=Courgette&family=Architects+Daughter&family=Handlee&family=Alex+Brush&family=Allura&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--bg:#f8f9fa;--card:#fff;--muted:#666}
+    html,body{height:100%}
+    body{font-family:Arial,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",sans-serif;margin:0;padding:20px;background:var(--bg);color:#111;box-sizing:border-box}
+    h1{text-align:center;margin:0 0 18px;font-size:28px}
+    .wrap{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+    .controls{margin-bottom:6px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-start}
+    select,button{padding:10px 12px;border-radius:6px;border:1px solid #ccc;font-size:15px;background:#fff}
+    button{background:#eee;cursor:pointer;transition:0.12s}
+    button:hover{background:#e0e0e0}
+    .container{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+    textarea, .preview{
+      width:100%;
+      height:12.5vh; /* reduced from 40vh */
+      min-height:180px;
+      max-height:60vh;
+      padding:16px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      background:var(--card);
+      box-sizing:border-box;
+      font-size:28px;
+      line-height:1.1;
+      overflow:auto;
+      resize:vertical;
+    }
+    .preview{display:flex;align-items:center;justify-content:center;text-align:center;white-space:pre-wrap;word-wrap:break-word}
+    label{font-weight:600;margin-right:8px}
+    @media (max-width:900px){
+      h1{font-size:22px}
+      textarea, .preview{height:12.5vh;font-size:22px}
+      .controls{justify-content:center}
+    }
+    @media (max-width:560px){
+      .container{grid-template-columns:1fr}
+      textarea, .preview{height:12.5vh;font-size:20px}
+    }
+  
+@media (max-width: 768px) {
+  .container { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; height: 100vh; }
+  textarea, .preview { height: 50vh !important; }
+}
+
+</style>
+
+  <style>
+    #fontSelect option { font-size: 18px; padding: 4px; }
+    #fontSelect option[value*="Cinzel Decorative"] { font-family: 'Cinzel Decorative', serif; }
+    #fontSelect option[value*="Julius Sans One"] { font-family: 'Julius Sans One', sans-serif; }
+    #fontSelect option[value*="Patrick Hand"] { font-family: 'Patrick Hand', cursive; }
+    #fontSelect option[value*="Dancing Script"] { font-family: 'Dancing Script', cursive; }
+    #fontSelect option[value*="Roboto"] { font-family: 'Roboto', sans-serif; }
+    #fontSelect option[value*="Creepster"] { font-family: 'Creepster', cursive; }
+    #fontSelect option[value*="Baloo 2"] { font-family: 'Baloo 2', cursive; }
+    #fontSelect option[value*="Great Vibes"] { font-family: 'Great Vibes', cursive; }
+    #fontSelect option[value*="Indie Flower"] { font-family: 'Indie Flower', cursive; }
+    #fontSelect option[value*="Rock Salt"] { font-family: 'Rock Salt', cursive; }
+    #fontSelect option[value*="Paprika"] { font-family: 'Paprika', cursive; }
+    #fontSelect option[value*="Prata"] { font-family: 'Prata', serif; }
+    #fontSelect option[value*="Sacramento"] { font-family: 'Sacramento', cursive; }
+    #fontSelect option[value*="Shrikhand"] { font-family: 'Shrikhand', cursive; }
+    #fontSelect option[value*="Staatliches"] { font-family: 'Staatliches', sans-serif; }
+    #fontSelect option[value*="Vidaloka"] { font-family: 'Vidaloka', serif; }
+    #fontSelect option[value*="Vollkorn SC"] { font-family: 'Vollkorn SC', serif; }
+    #fontSelect option[value*="Yesteryear"] { font-family: 'Yesteryear', cursive; }
+    #fontSelect option[value*="Henny Penny"] { font-family: 'Henny Penny', cursive; }
+    #fontSelect option[value*="Pacifico"] { font-family: 'Pacifico', cursive; }
+    #fontSelect option[value*="Marck Script"] { font-family: 'Marck Script', cursive; }
+    #fontSelect option[value*="Lobster"] { font-family: 'Lobster', cursive; }
+    #fontSelect option[value*="Gloria Hallelujah"] { font-family: 'Gloria Hallelujah', cursive; }
+    #fontSelect option[value*="Courgette"] { font-family: 'Courgette', cursive; }
+    #fontSelect option[value*="Architects Daughter"] { font-family: 'Architects Daughter', cursive; }
+    #fontSelect option[value*="Handlee"] { font-family: 'Handlee', cursive; }
+    #fontSelect option[value*="Alex Brush"] { font-family: 'Alex Brush', cursive; }
+    #fontSelect option[value*="Allura"] { font-family: 'Allura', cursive; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Podglądacz czcionki</h1>
+
+    <div class="controls" role="toolbar" aria-label="Kontrolki generatora">
+      <label for="fontSelect">Wybierz czcionkę:</label>
+      <select id="fontSelect" aria-label="Lista czcionek">
+        <option value="'Alex Brush', cursive">Alex Brush</option>
+        <option value="'Allura', cursive">Allura</option>
+        <option value="'Architects Daughter', cursive">Architects Daughter</option>
+        <option value="'Baloo 2', cursive">Baloo 2</option>
+        <option value="'Cinzel Decorative', serif">Cinzel Decorative</option>
+        <option value="'Courgette', cursive">Courgette</option>
+        <option value="'Creepster', cursive">Creepster</option>
+        <option value="'Dancing Script', cursive">Dancing Script</option>
+        <option value="'Gloria Hallelujah', cursive">Gloria Hallelujah</option>
+        <option value="'Great Vibes', cursive">Great Vibes</option>
+        <option value="'Handlee', cursive">Handlee</option>
+        <option value="'Henny Penny', cursive">Henny Penny</option>
+        <option value="'Indie Flower', cursive">Indie Flower</option>
+        <option value="'Julius Sans One', sans-serif">Julius Sans One</option>
+        <option value="'Lobster', cursive">Lobster</option>
+        <option value="'Marck Script', cursive">Marck Script</option>
+        <option value="'Pacifico', cursive">Pacifico</option>
+        <option value="'Paprika', cursive">Paprika</option>
+        <option value="'Patrick Hand', cursive">Patrick Hand</option>
+        <option value="'Prata', serif">Prata</option>
+        <option value="'Rock Salt', cursive">Rock Salt</option>
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Sacramento', cursive">Sacramento</option>
+        <option value="'Shrikhand', cursive">Shrikhand</option>
+        <option value="'Staatliches', sans-serif">Staatliches</option>
+        <option value="'Vidaloka', serif">Vidaloka</option>
+        <option value="'Vollkorn SC', serif">Vollkorn SC</option>
+        <option value="'Yesteryear', cursive">Yesteryear</option>
+      </select>
+
+      <button id="clearBtn" title="Wyczyść pole">Wyczyść tekst</button>
+      <button id="incBtn" title="Powiększ tekst">Powiększ tekst</button>
+      <button id="decBtn" title="Pomniejsz tekst">Pomniejsz tekst</button>
+    </div>
+
+    <div class="container">
+      <div>
+        <h3>Wpisz tekst:</h3>
+        <textarea id="inputText" placeholder="Tu wpisz swoj tekst" aria-label="Pole tekstowe"></textarea>
+      </div>
+
+      <div>
+        <h3>Podgląd:</h3>
+        <div class="preview" id="preview" aria-live="polite">Tu wpisz swoj tekst</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const input = document.getElementById('inputText');
+  const preview = document.getElementById('preview');
+  const fontSelect = document.getElementById('fontSelect');
+  const clearBtn = document.getElementById('clearBtn');
+  const incBtn = document.getElementById('incBtn');
+  const decBtn = document.getElementById('decBtn');
+
+  let fontSize = 28;
+
+  function updatePreview(){
+    const text = input.value.trim();
+    preview.textContent = text.length ? text : 'Tu wpisz swoj tekst';
+    preview.style.fontFamily = fontSelect.value;
+    preview.style.fontSize = fontSize + 'px';
+  }
+
+  input.addEventListener('input', updatePreview);
+  fontSelect.addEventListener('change', updatePreview);
+
+  clearBtn.addEventListener('click', () => {
+    input.value = '';
+    updatePreview();
+    input.focus();
+  });
+
+  incBtn.addEventListener('click', () => {
+    fontSize = Math.min(120, fontSize + 2);
+    updatePreview();
+  });
+
+  decBtn.addEventListener('click', () => {
+    fontSize = Math.max(8, fontSize - 2);
+    updatePreview();
+  });
+
+  window.addEventListener('resize', () => {
+    updatePreview();
+  });
+
+  updatePreview();
+</script>
+</body>
+</html>
